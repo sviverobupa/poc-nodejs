@@ -53,7 +53,7 @@ gulp.task('icon-sync', function sync() {
 gulp.task('server',['icon-sync','sass:main','js:main'], function bs() {
 
   browserSync.init(null, {
-    proxy: 'http://localhost:1337',
+    proxy: 'http://localhost:8080',
     reloadDelay: 800
   });
 
