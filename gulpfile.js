@@ -80,14 +80,14 @@ gulp.task('server',['icon-sync','sass:main','js:main'], function bs() {
 gulp.task( 'sass:main', function sassMain() {
   return gulp
     .src( paths.stylesSrc + '/main.scss' )
-      .pipe( sourceMaps.init() )
+   //   .pipe( sourceMaps.init() )
     .pipe( sass({ outputStyle: 'compressed' }) )
     //.pipe( cleanCSS() )
-    .pipe(autoprefixer({
-      browsers: ['last 2 versions'],
-      cascade: false
-    }))
-    .pipe( sourceMaps.write('.') )
+    //.pipe(autoprefixer({
+    //  browsers: ['last 2 versions'],
+    //  cascade: false
+    //}))
+    //.pipe( sourceMaps.write('.') )
     .pipe( rename({ suffix: '.min' }) )
     .pipe( gulp.dest( paths.stylesDist ) );
 });
@@ -152,14 +152,6 @@ gulp.task( 'dist', [] ,function dist() {
     .src( paths.imagesSrc + '/**/*' )
     .pipe( cached() )
     .pipe( gulp.dest( paths.imagesDist ) );
-
-  gulp
-    .src(paths.scriptsSrc + '/env.js')
-    .pipe(gulp.dest( paths.scriptsDist) );
-
-  gulp
-    .src(paths.scriptsSrc + '/directives/*/*.html')
-    .pipe(gulp.dest( paths.scriptsDist) );
 });
 
 /**

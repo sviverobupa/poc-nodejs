@@ -13,7 +13,7 @@ app.set( "views", __dirname + "/src/views" );
 app.set( "view engine", "ejs" );
 app.set( "view cache", false );
 
-app.use( express.static("dist") );
+app.use( express.static( __dirname + "/dist") );
 
 app.get( "/", function( req, res ) {
   res.render( "pages/index", { _layoutFile: "layout" } );
