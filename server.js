@@ -1,33 +1,13 @@
-var express = require("express"),
-    engine = require("ejs-mate"),
-    app = express();
-
-var simplePaths = [ "/sample" ];
-
-// https://expressjs.com/en/guide/routing.html
-//let complexPaths = [];
-
-app.engine( "ejs", engine );
+var express = require("express");
+var app     = express();
 
 app.set( "views", __dirname + "/src/views" );
-app.set( "view engine", "ejs" );
-app.set( "view cache", false );
-
 app.use( express.static( __dirname + "/dist") );
 
-app.get( "/", function( req, res ) {
-  res.render( "pages/index", { _layoutFile: "layout" } );
+app.get('/',function(req,res){
+  res.sendFile(__dirname + '/src/views/pages/index.html');
 });
-
-simplePaths.forEach(function( val ) {
-  app.get( val, function( req, res ) {
-    res.render( "pages/" + val, { _layoutFile: "layout" } );
-  });
-});
-
-// TODO: do 404, 500 error pages
-// https://expressjs.com/en/guide/error-handling.html
 
 app.listen(8080);
 
-console.log("Listening on port 8080");
+console.log("Running at Port 8080");
