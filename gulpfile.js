@@ -39,11 +39,9 @@ gulp.task( 'sass:main', function sassMain() {
 });
 
 gulp.task( 'watch', function watch() {
-  gulp.watch( paths.stylesSrc + '/vendor.scss', ['sass:vendor'] );
-
   gulp.watch([
     paths.stylesSrc + '/main.scss',
-    paths.stylesSrc + '/*/*.scss',
+    paths.stylesSrc + '/*/*/*.scss'
 
   ], ['sass:main'] );
 
